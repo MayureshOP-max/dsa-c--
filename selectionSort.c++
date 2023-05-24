@@ -1,52 +1,57 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
+class Selection
+{
+public:
+    int j, i, min, pos;
 
-class sort{
-    public:
-        int i,j,n,t,size,min,pos;
-        int arr[20];
-        
-    public:
-        void selction_sort();
-        void print();
-
+public:
+    void Selection_sort(int array[], int size);
+    void Print_array(int array[], int size);
 };
-
-void sort :: selction_sort(){
-    cout<<"\n\t How many elements to enter: ";
-    cin>>size;
-    cout<<"\n\t Enter the number: ";
-    for(int i=0; i<size; i++)
+void Selection ::Selection_sort(int array[], int size)
+{
+    for (j = 0; j < size; j++)
     {
-        cin>>arr[i];
-    }
-    for(j=0;j<n;j++){
-        min = arr[j];
+        min = array[j];
         pos = j;
-        for(i=j+1; i<n; i++){
-            if(min>arr[i]){
-                min=arr[i];
-                pos=i;
+        for (i = j + 1; i < size; i++)
+        {
+            if (min > array[i])
+            {
+                min = array[i];
+                pos = i;
             }
         }
-        arr[pos]=arr[j];
-        arr[j]=min;
-
+        array[pos] = array[j];
+        array[j] = min;
     }
 }
-
-void sort :: print(){
-    cout << "\n\t The elements are: ";
-    for(int i=0;i<size;i++){
-        cout<< " "<<arr[i];
-    }    
-    cout<<"\n";
+void Selection ::Print_array(int array[], int size)
+{
+    cout << "\n\t The elements are = ";
+    for (int i = 0; i < size; i++)
+    {
+        cout << "   " << array[i];
+    }
+    cout << "\n";
 }
-
-int main(){
-    sort obj;
-    obj.selction_sort();
-    cout << "\n\t The sorted elements are: ";
-    obj.print();
+int main()
+{
+    Selection obj;
+    int array[20];
+    int size;
+    cout << "\n\t How many elementys to insert the data :- ";
+    cin >> size;
+    cout << "\n\t Enter the number :- ";
+    for (int i = 0; i < size; i++)
+    {
+        cin >> array[i];
+    }
+    cout << "\n\t The array is before sorting elements are = ";
+    obj.Print_array(array, size);
+    obj.Selection_sort(array, size);
+    cout << "\n\t The array is after sorting elements are = ";
+    obj.Print_array(array, size);
     return 0;
 }
